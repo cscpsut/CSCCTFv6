@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Minesweeper - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="retro-bg">
+    <div class="window-container">
+        <div class="window-header">
+            <div class="window-title">Retro Minesweeper</div>
+            <div class="window-controls">
+                <span class="minimize">_</span>
+                <span class="maximize">□</span>
+                <span class="close">×</span>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="retro-logo">
+                <h1>Welcome to Retro Minesweeper</h1>
+                <img src="{{ url_for('static', filename='mine.png') }}" alt="Mine Icon" class="pixel-art">
+            </div>
+            <div class="button-container">
+                <a href="{{ url_for('login') }}" class="retro-button">Login</a>
+                <a href="{{ url_for('signup') }}" class="retro-button">Sign Up</a>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="window-statusbar">
+            Ready
+        </div>
+    </div>
+</body>
+</html>

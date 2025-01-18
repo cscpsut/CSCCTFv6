@@ -1,0 +1,188 @@
+html,
+body {
+    font-family: "MS Sans Serif";
+    background-color: #004E98;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#window {
+    border: 2px solid blue;
+    width: 450px;
+    -webkit-box-shadow: 0 0 15px #9E9E9E;
+    box-shadow: 0 0 10px #9E9E9E;
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+    transform: scale(1.5);
+    /* Scale up the window */
+    transform-origin: center;
+    /* Ensure scaling is centered */
+}
+
+#error {
+    background-color: #FFCCCC;
+    color: #CC0000;
+    border: 1px solid #CC0000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    bottom: 250px;
+    position: relative;
+    left: 255px;
+
+}
+
+#topBar {
+    background: linear-gradient(#2B90FF, #0055EA, #026AFE);
+    color: white;
+    font-weight: bold;
+    margin-top: -16px;
+    padding-top: .001px;
+    padding-bottom: .008px;
+    letter-spacing: .5px;
+    font-size: 1em;
+}
+
+#topBarp {
+    position: relative;
+    left: 3.5px;
+}
+
+#logoArea {
+    background: linear-gradient(to right, #6286E1, #6286E1, #9FBBF6, #7899E9);
+    margin-top: -16px;
+    position: relative;
+    /* Ensure absolute positioning of canvas is relative to this */
+}
+
+#section {
+    text-align: center;
+    color: white;
+}
+
+#windowSpan {
+    font-size: 2em;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    font-weight: bold;
+    color: #EFF3FD;
+}
+
+#microsoftTop {
+    margin-top: -8px;
+    margin-bottom: -27px;
+    font-size: .7em;
+    margin-left: -60px;
+}
+
+#proBottom {
+    margin-top: -22px;
+}
+
+sup {
+    color: #F75A14;
+    font-size: 0.7em;
+}
+
+nav p {
+    margin-top: -15px;
+    font-size: 0.7em;
+    padding-bottom: 5px;
+    color: white;
+    position: relative;
+    /* Ensure absolute positioning of canvas is relative to this */
+    left: 3.5px;
+}
+
+#rightSpan {
+    float: right;
+    padding-right: 8px;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: -.5px;
+    font-size: 1.1em;
+}
+
+#orangeBar {
+    background: linear-gradient(to right, #6D8CE1, #6B81CA, #B48E7E, #E89148, #E89148, #B48E7E, #6B87D5);
+    height: 9px;
+    margin-top: -11px;
+}
+
+form {
+    background-color: #ECE9D8;
+    margin-top: -16px;
+    font-size: 0.75em;
+    letter-spacing: .5px;
+    clear: left;
+}
+
+form p:first-child {
+    padding-top: 15px;
+}
+
+form p {
+    display: block;
+}
+
+form input {
+    width: 280px;
+    clear: left;
+}
+
+button {
+    margin-bottom: 8px;
+    margin-left: 10px;
+    border-radius: 5%;
+    width: 95px;
+}
+
+button#forget {
+    margin-bottom: 8px;
+    margin-left: 10px;
+    border-radius: 5%;
+    width: 120px;
+    position: relative;
+    left: 160px;
+}
+
+#firstButton {
+    margin-left: 120px;
+}
+
+button:hover {
+    border: 2px solid #95AFED;
+}
+
+button:active {
+    border: 2px solid #F49130;
+}
+
+.specialAlign {
+    padding-left: 10px;
+}
+
+canvas {
+    width: 65px;
+    height: 110px;
+    transform: rotate(-5deg);
+    position: absolute;
+    /* top: 1px; */
+    bottom: -75px;
+    right: 670px;
+    /* Adjust this value to ensure the canvas is visible */
+}

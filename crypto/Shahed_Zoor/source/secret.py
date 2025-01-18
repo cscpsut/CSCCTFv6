@@ -1,0 +1,1 @@
+FLAG = b"CSCCTF{Definetly_Fake_Case}"

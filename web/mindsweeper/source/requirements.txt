@@ -1,0 +1,3 @@
+flask
+flask-session
+psycopg2-binary

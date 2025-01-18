@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
+:root {
+  --floppy-color: #675d56;
+  --external-background: #ffcd39;
+  --label-line1: #ddc4b0;
+  --label-line2: #decdc1;
+  --text-note: #a4243b;
+  --shadow: #32281d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('/assets/images/desktop.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Floppy Disk */
+.floppy {
+  width: 320px;
+  height: 420px;
+  background-color: var(--floppy-color);
+  box-shadow: -5px 8px 10px var(--shadow);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.top {
+  width: 200px;
+  height: 100px;
+  background-color: var(--floppy-color);
+  margin: 0 auto;
+  position: relative;
+  border-left: 2px solid #877d76;
+  border-right: 2px solid #877d76;
+  border-top: 2px solid var(--external-background);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.slider {
+  width: 150px;
+  height: inherit;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -3px;
+  border-radius: 8px;
+  border: 10px solid #33291f;
+  z-index: 1;
+}
+
+.fitinha {
+  position: absolute;
+  width: 42px;
+  height: 82px;
+  background-color: rgba(0, 0, 0, 0.8);
+  right: 45px;
+  top: 6px;
+  z-index: 0;
+}
+
+.down {
+  width: 100%;
+  height: auto;
+  border-left: 2px solid #877d76;
+  border-right: 2px solid #403c3a;
+  border-top: 2px solid #403c3a;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, var(--label-line1) 50%, var(--label-line2) 50%);
+  background-size: 100% 50px;
+  padding: 15px;
+}
+
+/* Notes Section */
+.notes {
+  font-family: "Gloria Hallelujah", cursive;
+  color: var(--text-note);
+  font-size: 1rem;
+  transform: rotate(-10deg);
+  margin-left: 10px;
+}
+
+.notes p {
+  margin: 5px 0;
+}
+
+.notes p > span {
+  text-decoration: underline;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--text-note);
+}
+
+/* Upload Area */
+.upload-area {
+  margin-top: 15px;
+  text-align: center;
+}
+
+input[type="file"] {
+  display: block;
+  margin: 0 auto 15px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #212529;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #343a40;
+}
+
+button i {
+  margin-right: 8px;
+}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}DB Viewer{% endblock %}
+{% block content %}
+<div class="space-y-8">
+    <h1 class="text-3xl font-bold">Database Tables</h1>
+    <h2 class="text-2xl font-semibold">(The first 3 rows of each table are shown)</h2>
+    {% for table_name, table_data in tables.items() %}
+    <div class="bg-gray-800 rounded-lg overflow-hidden">
+        <div class="bg-gray-700 px-4 py-2">
+            <h2 class="text-xl font-semibold">{{ table_name }}</h2>
+        </div>
+        <div class="p-4 overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-700">
+                <thead>
+                    <tr>
+                        {% for column in table_data.columns %}
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                            {{ column }}
+                        </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-700">
+                    {% for row in table_data.rows %}
+                    <tr class="hover:bg-gray-700">
+                        {% for value in row %}
+                        <td class="px-6 py-4 whitespace-nowrap text-sm">{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

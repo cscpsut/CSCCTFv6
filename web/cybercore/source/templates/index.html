@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h1 class="text-4xl font-bold mb-8">Welcome to CyberCore Systems</h1>
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg mb-6">
+        <h2 class="text-2xl font-semibold mb-4">Legacy Database Management Console v1.0</h2>
+        <p class="text-gray-300 mb-6">Access and manage system data from the Y2K era</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-700 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">DB Viewer</h3>
+                <p class="text-gray-300 mb-4">View all database tables and records</p>
+                <a href="/viewer" class="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">Access Viewer</a>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">DB Interactive</h3>
+                <p class="text-gray-300 mb-4">Run custom queries on the database</p>
+                <a href="/interactive" class="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">Access Console</a>
+            </div>
+        </div>
+    </div>
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-md mx-auto">
+        <h3 class="text-xl font-semibold mb-2">View a Joke!</h3>
+        <p class="text-gray-300 mb-4">Need a laugh? Click the button below to watch a funny joke</p>
+        <a href="/joke" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Generate Joke</a>
+    </div>
+</div>
+{% endblock %}

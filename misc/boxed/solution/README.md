@@ -1,0 +1,1 @@
+1. use the chmod binary found in busybox to add execute permissions to the flag binary.

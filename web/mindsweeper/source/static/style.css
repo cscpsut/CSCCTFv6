@@ -1,0 +1,318 @@
+/* Global Styles */
+:root {
+    --window-bg: #c0c0c0;
+    --button-face: #dfdfdf;
+    --button-highlight: #ffffff;
+    --button-shadow: #808080;
+    --button-dark-shadow: #404040;
+    --window-frame: #0000aa;
+    --text-color: #000000;
+}
+
+body {
+    font-family: "MS Sans Serif", "Segoe UI", Tahoma, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #008080;
+    background-image: linear-gradient(45deg, #007070 25%, transparent 25%),
+                      linear-gradient(-45deg, #007070 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #007070 75%),
+                      linear-gradient(-45deg, transparent 75%, #007070 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Window Styling */
+.window-container {
+    background-color: var(--window-bg);
+    border: 3px solid var(--button-face);
+    border-right-color: var(--button-dark-shadow);
+    border-bottom-color: var(--button-dark-shadow);
+    box-shadow: inset 1px 1px var(--button-highlight), 
+                inset -1px -1px var(--button-shadow);
+    margin: 20px auto;
+    max-width: 800px;
+    min-height: 400px;
+}
+
+.window-header {
+    background: linear-gradient(90deg, var(--window-frame) 0%, #1084d0 100%);
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.window-controls span {
+    background: var(--button-face);
+    border: 1px solid var(--button-highlight);
+    border-right-color: var(--button-shadow);
+    border-bottom-color: var(--button-shadow);
+    color: black;
+    width: 16px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.window-content {
+    padding: 20px;
+    min-height: 300px;
+}
+
+.window-statusbar {
+    border-top: 2px solid var(--button-shadow);
+    padding: 3px 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    background: var(--button-face);
+}
+
+/* Form Styling */
+.retro-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--window-bg);
+    border: 2px inset var(--button-shadow);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.retro-input, .retro-textarea {
+    width: 100%;
+    padding: 5px;
+    border: 2px inset var(--button-shadow);
+    background: white;
+    font-family: inherit;
+    margin-top: 5px;
+}
+
+/* Button Styling */
+.retro-button {
+    background: var(--button-face);
+    border: 2px solid var(--button-highlight);
+    border-right-color: var(--button-shadow);
+    border-bottom-color: var(--button-shadow);
+    padding: 5px 15px;
+    font-family: inherit;
+    cursor: pointer;
+    color: var(--text-color);
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+}
+
+.retro-button:active {
+    border-color: var(--button-shadow);
+    border-right-color: var(--button-highlight);
+    border-bottom-color: var(--button-highlight);
+}
+
+/* Game Grid Styling */
+.minesweeper-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--button-shadow);
+    padding: 3px;
+    width: fit-content;
+    margin: 20px auto;
+    border: 3px inset var(--button-shadow);
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background: var(--button-face);
+    border: 2px solid var(--button-highlight);
+    border-right-color: var(--button-shadow);
+    border-bottom-color: var(--button-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cell.revealed {
+    border: 1px solid var(--button-shadow);
+    background: #ccc;
+    font-family: "Courier New", monospace;
+}
+
+.cell.flagged::before {
+    content: "🚩";
+}
+
+.cell.mine {
+    background: red;
+}
+
+.cell.mine.exploded {
+    background: darkred;
+}
+
+/* Number Colors */
+.cell.mines-1 { color: blue; }
+.cell.mines-2 { color: green; }
+.cell.mines-3 { color: red; }
+.cell.mines-4 { color: darkblue; }
+.cell.mines-5 { color: darkred; }
+.cell.mines-6 { color: teal; }
+.cell.mines-7 { color: black; }
+.cell.mines-8 { color: gray; }
+
+/* Dashboard Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.retro-panel {
+    background: var(--window-bg);
+    border: 2px inset var(--button-shadow);
+    padding: 10px;
+}
+
+.retro-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.retro-table th, .retro-table td {
+    padding: 5px;
+    border: 1px solid var(--button-shadow);
+    text-align: left;
+}
+
+.retro-table th {
+    background: var(--button-face);
+}
+
+/* Alert Messages */
+.alert {
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px solid;
+}
+
+.alert-error {
+    background: #fdd;
+    border-color: #faa;
+    color: #900;
+}
+
+.alert-success {
+    background: #dfd;
+    border-color: #afa;
+    color: #090;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .window-container {
+        margin: 10px;
+        max-width: 100%;
+    }
+}
+
+.game-message-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.message-content {
+    background: var(--window-bg);
+    border: 3px solid var(--button-face);
+    border-right-color: var(--button-dark-shadow);
+    border-bottom-color: var(--button-dark-shadow);
+    padding: 20px;
+    text-align: center;
+    min-width: 200px;
+}
+
+.message-text {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.game-message-overlay.win .message-text {
+    color: #008000;
+}
+
+.game-message-overlay.lose .message-text {
+    color: #800000;
+}
+
+.game-section {
+    position: relative;
+}
+
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 96px;
+    height: 96px;
+    border: 2px inset var(--button-shadow);
+    padding: 2px;
+    background: white;
+}
+
+.profile-section {
+    margin: 15px 0;
+    padding: 10px;
+    border: 2px inset var(--button-shadow);
+}
+
+.profile-section h3 {
+    margin-top: 0;
+    color: var(--window-frame);
+}
+
+.retro-textbox {
+    background: white;
+    border: 2px inset var(--button-shadow);
+    padding: 10px;
+    min-height: 50px;
+}
+
+.profile-actions {
+    margin-top: 20px;
+    text-align: center;
+}

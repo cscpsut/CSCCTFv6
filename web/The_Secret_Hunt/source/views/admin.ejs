@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/desktop.css">
+</head>
+
+<body>
+    <div class="desktop">
+        <div class="icon faisal-akhtar">
+            <img src="images/documents.png">
+            <div class="icon-name">Faisal Akhtar</div>
+        </div>
+        <div class="icon my-computer">
+            <img src="images/computer.png">
+            <div class="icon-name">My Computer</div>
+        </div>
+        <div class="icon my-network">
+            <img src="images/network.png">
+            <div class="icon-name">My Network</div>
+        </div>
+        <div class="icon note-pad">
+            <img src="images/notepad.png">
+            <div class="icon-name">ReadME.txt</div>
+        </div>
+        <div class="icon flag">
+            <img src="images/notepad.png">
+            <div class="icon-name">Flag.txt</div>
+        </div>
+        <div class="icon recycle-bin">
+            <img src="images/recycle.png">
+            <div class="icon-name">Recycle Bin</div>
+        </div>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <div id="filename"><img src="images/notepad.png"> ReadME.txt</div>
+            <div class="controls">
+                <button class="cls"></button>
+                <button class="max"></button>
+                <button class="min"></button>
+            </div>
+        </div>
+        <div class="menu-bar">
+            <span>File</span>
+            <span>Edit</span>
+            <span>Format</span>
+            <span>View</span>
+            <span>Help</span>
+        </div>
+        <textarea></textarea>
+    </div>
+
+    <div class="taskbar">
+        <div class="start-button"><img src="images/logo.svg"> start</div>
+
+        <div class="opened-tabs">
+            <div class="open-tab" onclick="window.open('https://faisalakhtar.github.io/')"><img
+                    src="images/documents.png"> Faisal Akhtar</div>
+            <div class="open-tab" onclick="window.open('https://github.com/faisalAkhtar/')"><img
+                    src="images/computer.png"> My Computer</div>
+            <div class="open-tab" onclick="window.open('https://twitter.com/faisallakhtarr/')"><img
+                    src="images/network.png"> My Network</div>
+            <div class="open-tab readme active"><img src="images/notepad.png">
+                ReadME.txt</div>
+        </div>
+
+        <div class="time">11:20 PM</div>
+    </div>
+
+</body>
+<script>
+    let time = document.querySelector(".time")
+    time.innerHTML = new Intl.DateTimeFormat('en-IN', { hour: 'numeric', minute: 'numeric', hour12: true }).format(new Date())
+    time.setAttribute("title", new Intl.DateTimeFormat('en-IN', { hour: 'numeric', minute: 'numeric', hour12: true, year: 'numeric', month: 'long', day: 'numeric' }).format(new Date()))
+
+    let timeSetter = setInterval(() => {
+        time.innerHTML = new Intl.DateTimeFormat('en-IN', { hour: 'numeric', minute: 'numeric', hour12: true }).format(new Date())
+        time.setAttribute("title", new Intl.DateTimeFormat('en-IN', { hour: 'numeric', minute: 'numeric', hour12: true, year: 'numeric', month: 'long', day: 'numeric' }).format(new Date()))
+    }, 60000);
+
+    document.querySelector(".desktop").onclick = function () {
+        document.querySelectorAll(".icon").forEach((e) => {
+            e.classList.remove("selected")
+        })
+    }
+
+    document.querySelectorAll(".icon").forEach((icon) => {
+        icon.onclick = function () {
+            setTimeout(() => {
+                document.querySelectorAll(".icon").forEach((e) => {
+                    e.classList.remove("selected")
+                })
+                this.classList.add("selected")
+            }, 1);
+        }
+    })
+
+    document.querySelector(".max").onclick = function () {
+        document.querySelector(".window").classList.toggle("maximized")
+    }
+
+    document.querySelector(".min").onclick = function () {
+        document.querySelector(".readme").classList.toggle("active")
+        document.querySelector(".window").classList.toggle("minimized")
+    }
+
+    document.querySelector(".readme").onclick = function () {
+        document.querySelector(".readme").classList.toggle("active")
+        document.querySelector(".window").classList.toggle("minimized")
+    }
+
+    document.querySelector(".cls").onclick = function () {
+        document.querySelector(".readme").style.display = "none"
+        document.querySelector(".window").style.display = "none"
+    }
+
+    document.querySelector(".faisal-akhtar").ondblclick = function () {
+        setTimeout(() => { this.classList.remove("selected") }, 2)
+        window.open("https://faisalakhtar.github.io/")
+    }
+
+    document.querySelector(".my-computer").ondblclick = function () {
+        setTimeout(() => { this.classList.remove("selected") }, 2)
+        window.open("https://github.com/faisalAkhtar/")
+    }
+
+    document.querySelector(".my-network").ondblclick = function () {
+        setTimeout(() => { this.classList.remove("selected") }, 2)
+        window.open("https://twitter.com/faisallakhtarr/")
+    }
+
+    document.querySelector(".note-pad").ondblclick = function () {
+        setTimeout(() => { this.classList.remove("selected") }, 2)
+        document.querySelector(".readme").style.display = "initial"
+        document.querySelector(".window").style.display = "initial"
+        document.querySelector(".readme").classList.add("active")
+        document.querySelector(".window").classList.remove("minimized")
+        document.querySelector("#filename").innerHTML = "<img src='images/notepad.png'> ReadME.txt"
+        document.querySelector("textarea").value = "Hello World!\n\nFeatures:\n- Desktop icons are clickable. Double clicking them takes you to some of my links (github, twitter, portfolio).\n- Time in system-tray is your system's time.\n- This window is draggable, closable, minimizable and maximizable. Try it.\n- The opened tabs in taskbar also take you to my links, same as the icons.\n______________________________\n\nThe code is on github. Star the repository if you liked this. Contributions to this repository are welcome and appreciated.\n______________________________\n\nDo follow me on github (@faisalakhtar) and twitter(@faisallakhtarr). Open 'My Computer' and 'My Network' to go to these links.\n"
+    }
+
+    document.querySelector("textarea").value = "Hello World!\n\nFeatures:\n- Desktop icons are clickable. Double clicking them takes you to some of my links (github, twitter, portfolio).\n- Time in system-tray is your system's time.\n- This window is draggable, closable, minimizable and maximizable. Try it.\n- The opened tabs in taskbar also take you to my links, same as the icons.\n______________________________\n\nThe code is on github. Star the repository if you liked this. Contributions to this repository are welcome and appreciated.\n______________________________\n\nDo follow me on github (@faisalakhtar) and twitter(@faisallakhtarr). Open 'My Computer' and 'My Network' to go to these links.\n"
+
+    document.querySelector(".flag").ondblclick = function () {
+        setTimeout(() => { this.classList.remove("selected") }, 2)
+        document.querySelector(".readme").style.display = "initial"
+        document.querySelector(".window").style.display = "initial"
+        document.querySelector(".readme").classList.add("active")
+        document.querySelector(".window").classList.remove("minimized")
+        document.querySelector("#filename").innerHTML = "<img src='images/notepad.png'> Flag.txt"
+        document.querySelector("textarea").value = "<%= flag %>"
+    }
+
+
+
+
+    dragWindow(document.querySelector(".window"));
+    function dragWindow(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+        document.querySelector(".title-bar").onmousedown = dragging
+
+        function dragging(e) {
+            e = e || window.event;
+            e.preventDefault();
+
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+
+            document.onmouseup = stopDragging;
+            document.onmousemove = draggedWindow;
+        }
+
+        function draggedWindow(e) {
+            e = e || window.event;
+            e.preventDefault();
+
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function stopDragging() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+</script>
+
+</html>

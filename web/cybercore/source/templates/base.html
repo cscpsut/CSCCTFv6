@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCore Systems - {% block title %}{% endblock %}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for that retro feel */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border: 1px solid #333;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00ff00;
+            border: 1px solid #333;
+        }
+        /* Matrix-style text animation for the company name */
+        @keyframes flicker {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        .matrix-text {
+            animation: flicker 2s infinite;
+            text-shadow: 0 0 5px #00ff00;
+        }
+    </style>
+</head>
+<body class="bg-black text-green-400 min-h-screen font-mono">
+    <nav class="border-b border-green-900 bg-gradient-to-r from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="matrix-text text-green-500 text-xl font-bold">💾 CyberCore</span>
+                    </div>
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-900 hover:text-green-300 border border-transparent hover:border-green-900">Home</a>
+                        <a href="/viewer" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-900 hover:text-green-300 border border-transparent hover:border-green-900">DB Viewer</a>
+                        <a href="/interactive" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-900 hover:text-green-300 border border-transparent hover:border-green-900">DB Interactive</a>
+                    </div>
+                </div>
+                <div class="text-sm text-green-600">
+                    System Time: <span id="systemTime"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-6 px-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script>
+        // Retro-style system time display
+        function updateTime() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('en-US', { 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('systemTime').textContent = time;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>

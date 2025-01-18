@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Retro Minesweeper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="retro-bg">
+    <div class="window-container dashboard">
+        <div class="window-header">
+            <div class="window-title">Minesweeper.exe - {{ username }}</div>
+            <div class="window-controls">
+                <span class="minimize">_</span>
+                <span class="maximize">□</span>
+                <span class="close">×</span>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="dashboard-grid">
+                <div class="game-section">
+                    <div class="game-header">
+                        <h2>Minesweeper Game</h2>
+                        <button id="start-game" class="retro-button">New Game</button>
+                    </div>
+                    <div id="game-grid" class="minesweeper-grid"></div>
+                </div>
+                
+                <div class="sidebar">
+                    <div class="retro-panel">
+                        <h3>High Scores</h3>
+                        <table class="retro-table">
+                            <thead>
+                                <tr>
+                                    <th>Player</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for score in leaderboard %}
+                                <tr>
+                                    <td>{{ score.username }}</td>
+                                    <td>{{ score.score }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="retro-panel">
+                        <h3>Recent Games</h3>
+                        <div class="recent-games">
+                            {% for game in games %}
+                            <div class="game-entry">
+                                <span>Seed: {{ game.seed }}</span>
+                                <span>{{ game.timestamp }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-controls">
+                <a href="{{ url_for('profile') }}" class="retro-button">Profile</a>
+                <!-- <a href="{{ url_for('logout') }}" class="retro-button">Logout</a> -->
+            </div>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="window-statusbar">
+            Connected as: {{ username }} | Games played: {% if games|length == 10 %}10+{% else %}{{ games|length }}{% endif %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>

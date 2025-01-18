@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/desktop.css">
+</head>
+
+<body>
+    <div class="desktop">
+        <div class="icon faisal-akhtar">
+            <img src="images/documents.png">
+            <div class="icon-name">Faisal Akhtar</div>
+        </div>
+        <div class="icon my-computer">
+            <img src="images/computer.png">
+            <div class="icon-name">My Computer</div>
+        </div>
+        <div class="icon my-network">
+            <img src="images/network.png">
+            <div class="icon-name">My Network</div>
+        </div>
+        <div class="icon note-pad">
+            <img src="images/notepad.png">
+            <div class="icon-name">ReadME.txt</div>
+        </div>
+        <div class="icon reddington">
+            <img src="images/notepad.png">
+            <div class="icon-name">Reddington.txt</div>
+        </div>
+        <div class="icon recycle-bin">
+            <img src="images/recycle.png">
+            <div class="icon-name">Recycle Bin</div>
+        </div>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <div id="filename"><img src="images/notepad.png"> ReadME.txt</div>
+            <div class="controls">
+                <button class="cls"></button>
+                <button class="max"></button>
+                <button class="min"></button>
+            </div>
+        </div>
+        <div class="menu-bar">
+            <span>File</span>
+            <span>Edit</span>
+            <span>Format</span>
+            <span>View</span>
+            <span>Help</span>
+        </div>
+        <textarea></textarea>
+    </div>
+
+    <div class="taskbar">
+        <div class="start-button"><img src="images/logo.svg"> start</div>
+
+        <div class="opened-tabs">
+            <div class="open-tab" onclick="window.open('https://faisalakhtar.github.io/')"><img
+                    src="images/documents.png"> Faisal Akhtar</div>
+            <div class="open-tab" onclick="window.open('https://github.com/faisalAkhtar/')"><img
+                    src="images/computer.png"> My Computer</div>
+            <div class="open-tab" onclick="window.open('https://twitter.com/faisallakhtarr/')"><img
+                    src="images/network.png"> My Network</div>
+            <div class="open-tab readme active"><img src="images/notepad.png"> ReadME.txt</div>
+        </div>
+
+        <div class="time">11:20 PM</div>
+    </div>
+
+    <script src="js/desktop.js"></script>
+</body>
+
+</html>

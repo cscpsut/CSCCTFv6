@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}DB Interactive{% endblock %}
+{% block content %}
+<div class="space-y-8">
+    <h1 class="text-3xl font-bold mb-6">Interactive Query Console</h1>
+    <div class="bg-gray-800 rounded-lg p-6">
+        <form method="POST" class="space-y-4">
+            <div class="space-y-2">
+                <label class="block text-sm font-medium">Query Template:</label>
+                <div class="bg-gray-700 p-4 rounded text-lg font-mono">
+                    <div class="flex items-center space-x-2">
+                        <div class="flex flex-col items-center">
+                            <span>SELECT</span>
+                            <span class="text-xs text-gray-400">required</span>
+                        </div>
+                        <input type="text" name="columns" class="bg-gray-600 rounded px-2 py-1 w-64" placeholder="columns" value="{{ columns or '' }}" required>
+                        <div class="flex flex-col items-center">
+                            <span>FROM</span>
+                            <span class="text-xs text-gray-400">optional</span>
+                        </div>
+                        <input type="text" name="table" class="bg-gray-600 rounded px-2 py-1 w-64" placeholder="table" value="{{ table or '' }}">
+                        <div class="flex flex-col items-center">
+                            <span>WHERE</span>
+                            <span class="text-xs text-gray-400">optional</span>
+                        </div>
+                        <input type="text" name="condition" class="bg-gray-600 rounded px-2 py-1 w-64" placeholder="condition" value="{{ condition or '' }}">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded">Execute Query</button>
+        </form>
+    </div>
+
+    {% if warning %}
+    <div class="bg-yellow-900 text-white p-4 rounded-lg">
+        <h2 class="text-lg font-semibold mb-2">Warning</h2>
+        <p class="font-mono">{{ warning }}</p>
+    </div>
+    {% endif %}
+    
+    {% if error %}
+    <div class="bg-red-900 text-white p-4 rounded-lg">
+        <h2 class="text-lg font-semibold mb-2">Error</h2>
+        <p class="font-mono">{{ error }}</p>
+    </div>
+    {% endif %}
+
+    {% if results %}
+    <div class="bg-gray-800 rounded-lg overflow-hidden">
+        <div class="bg-gray-700 px-4 py-2">
+            <h2 class="text-xl font-semibold">Query Results</h2>
+        </div>
+        <div class="p-4 overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-700">
+                <thead>
+                    <tr>
+                        {% for column in results[0].keys() %}
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                            {{ column }}
+                        </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-700">
+                    {% for record in results %}
+                    <tr class="hover:bg-gray-700">
+                        {% for value in record.values() %}
+                        <td class="px-6 py-4 whitespace-nowrap text-sm">{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+gcc flag.c -o flag
+rm flag.c
+chmod -x flag
+chmod -x /usr/bin/base64
+chmod -x /usr/bin/cat
+chmod -x /usr/bin/chmod

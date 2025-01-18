@@ -1,0 +1,1 @@
+password = "Zip file password NOT THE FLAG : ZipFileCryptoGenius"

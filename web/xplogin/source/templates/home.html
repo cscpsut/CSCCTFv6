@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='desktop.webp') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* background-attachment: fixed; */
+            background-position: center;
+            /* color: white;
+            text-align: center;
+            font-family: Arial, sans-serif; */
+            font-size: large;
+        }
+
+        /* h1 {
+            font-size: 7em;
+            color: blue
+        } */
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the Home Page!</h1>
+    <br>
+    <h1>{% if flag %}{{ flag }}{% endif %}</h1>
+    <audio id="bootSound" src="{{ url_for('static', filename='boot.mp3') }}" preload="auto"></audio>
+    <script>
+        {% if success %}
+        document.getElementById("bootSound").play();
+        {% endif %}
+    </script>
+</body>
+
+</html>

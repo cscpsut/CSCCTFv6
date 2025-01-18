@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Windows XP Login Screen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+
+</head>
+
+
+<body>
+
+    <!-- partial:index.partial.html -->
+    <div id="window">
+
+        <div id="topBar">
+            <p id="topBarp">Log On to Windows</p>
+        </div>
+
+        <div id="logoArea">
+            <div style="position: absolute; top: 35px; left: 855px;">
+                <canvas id="canvas" width="80" height="100">
+                    This browser is not compatible with HTML5 canvas.
+                </canvas>
+            </div>
+            <div id="section"><br />
+                <p id="microsoftTop">Microsoft</p>
+                <p><span id="windowSpan">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows<sup>xp</sup></span></p>
+                <p id="proBottom">Professional</p>
+            </div>
+
+            <nav>
+                <p>Copyright &#169; 1985-2001</p>
+                <p>Microsoft Corporation <span id="rightSpan">Microsoft</span></p>
+            </nav>
+        </div> <!-- end of logoArea -->
+
+        <div id="orangeBar">
+        </div> <!-- end of orangeBar -->
+        <!-- Error message section -->
+
+        <form method="post" action="/login" onsubmit="return validateForm()">
+            <p class="specialAlign">User name: <input type="text" name="username"></p>
+            <p class="specialAlign">Password: &nbsp; <input type="password" name="password"></p>
+            <button type="submit" id="firstButton">OK</button>
+            <button type="button" onclick="location.href='register'">Register</button>
+            <button type="button" id="forget" onclick="location.href='forgot_password'">Forgot
+                Password</button>
+
+        </form>
+        <audio id="errorSound" src="{{ url_for('static', filename='error.mp3') }}" preload="auto"></audio>
+        <audio id="bootSound" src="{{ url_for('static', filename='boot.mp3') }}" preload="auto"></audio>
+
+        <script>
+            function validateForm() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                if (username == "" || password == "") {
+                    alert("Username and Password are required!");
+                    return false;
+                }
+                return true;
+            }
+
+            {% if error %}
+            document.getElementById("errorSound").play();
+            alert("{{ error }}");
+            {% endif %}
+
+            {% if success %}
+            document.getElementById("bootSound").play();
+            {% endif %}
+        </script>
+
+
+
+    </div> <!-- end of window -->
+</body>
+<!-- partial -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Retro Minesweeper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="retro-bg">
+    <div class="window-container">
+        <div class="window-header">
+            <div class="window-title">Setup_New_User.exe</div>
+            <div class="window-controls">
+                <span class="minimize">_</span>
+                <span class="maximize">□</span>
+                <span class="close">×</span>
+            </div>
+        </div>
+        <div class="window-content">
+            <form method="POST" action="{{ url_for('signup') }}" class="retro-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required class="retro-input">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required class="retro-input">
+                </div>
+                <div class="form-group">
+                    <label for="user_info">Bio:</label>
+                    <textarea id="user_info" name="user_info" class="retro-textarea"></textarea>
+                </div>
+                <button type="submit" class="retro-button">Create Account</button>
+            </form>
+            <div class="links">
+                <a href="{{ url_for('login') }}" class="retro-link">Already have an account? Login</a>
+                <a href="{{ url_for('home') }}" class="retro-link">Back to Home</a>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="window-statusbar">
+            Creating new user profile...
+        </div>
+    </div>
+</body>
+</html>

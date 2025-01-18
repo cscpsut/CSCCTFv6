@@ -1,0 +1,1 @@
+FLAG = b"CSCCTF{no_one_said_anything_about_links_this_CTF_https://www.youtube.com/watch?v=tN5KIUNfYGA}"
